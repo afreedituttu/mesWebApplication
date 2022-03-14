@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/register',async function(req,res,next){
   req.session.user = 'user'
   req.session.id = true
-  console.log(req.body);
+  
   try{
     const Student = new student({
       name:req.body.name,
@@ -22,7 +22,7 @@ router.post('/register',async function(req,res,next){
       email:req.body.email
     })
     const result = await Student.save()
-    console.log(result);
+    
     res.redirect('/')
   }catch(err){
     error = {}
@@ -38,7 +38,7 @@ router.post('/register',async function(req,res,next){
   res.render('index1',error)
 })
 // router.get('/code123admin',function(req, res, next) {
-//   console.log('bla');
+//   
 //   res.render('adminD');
 // });
 

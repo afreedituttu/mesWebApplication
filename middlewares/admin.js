@@ -1,5 +1,5 @@
 middleWares={verifyLogin:function(req,res,next){
-    if(req.session.logInId){
+    if(req.session.loggedIn){
         
         next()
     }else{

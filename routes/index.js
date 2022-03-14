@@ -27,15 +27,22 @@ router.post('/register',async function(req,res,next){
   }catch(err){
     error = {}
     console.log(err);
-    if(err.keyPattern.email){
-      error.message = 'email already exist'
-    }else if(err.keyPattern.phoneNumber){
-      error.message = 'phone number already exist'
-    }else{
-      error.message = 'unknown error'
+    console.log(err.errors);
+    try{
+      if(err.keyPattern.email){
+        error.message = 'email already exist'
+      }else if(err.keyPattern.phoneNumber){
+        error.message = 'phone number already exist'
+      }else if(err.kind==='minlength'){
+        error.message = 'minimum length of name should be 3'
+      }else{
+        res.send('some error accured')
+      }
+    }catch(err){
+      res.send('some error accured')
     }
+    res.render('index1',error)
   }
-  res.render('index1',error)
 })
 // router.get('/code123admin',function(req, res, next) {
 //   

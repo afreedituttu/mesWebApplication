@@ -41,6 +41,10 @@ const studentSchema = mongoose.Schema({
         unique:[true,'whatsapp number already exist'],
         minlength:9,
         maxlength:11
+    },
+    joindate:{
+        type:Date,
+        default:Date.now()
     }
 })
 const student = new mongoose.model('students',studentSchema)

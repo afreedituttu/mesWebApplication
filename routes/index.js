@@ -48,9 +48,5 @@ router.post('/register',async function(req,res,next){
     }
   }
 })
-// router.get('/code123admin',function(req, res, next) {
-//   
-//   res.render('adminD');
-// });
 
 module.exports = router;

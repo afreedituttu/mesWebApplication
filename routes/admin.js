@@ -10,13 +10,6 @@ router.get('/',verifyLogin,async(req, res, next)=>{
   res.render('adminD',{'data':studentData});
 });
 router.get('/login',async(req,res)=>{
-//   const admins = new admin({
-//     username:'afreedi',
-//     password:'afreedi',
-//     admin:true
-//   })
-//   const result = await admins.save()
-
   res.render('adminLogin')
 })
 router.post('/login',async(req,res)=>{
@@ -36,7 +29,6 @@ router.post('/login',async(req,res)=>{
           res.redirect('http://locahost:3000/code123admin')
         }
       }).catch((err)=>{
-        console.log(err);
         res.send('server error')
       });
     }else{

@@ -5,10 +5,7 @@ var sanitizer = require('sanitizer')
 var bcrypt = require('bcrypt')
 /* GET home page. */
 router.get('/',async function(req, res, next) {
-  let some = await bcrypt.hash('afreedi',8)
-  console.log(some);
   res.render('index1');
-
 });
 router.post('/register',async function(req,res,next){
   let info = req.body
@@ -20,8 +17,8 @@ router.post('/register',async function(req,res,next){
         name:sanitizer.escape(req.body.name),
         stream:sanitizer.escape(req.body.stream),
         school:sanitizer.escape(req.body.school),
-        phoneNumber:sanitizer.escape(req.body.phone),
-        whatsappNumber:sanitizer.escape(req.body.wphone),
+        phoneNumber:req.body.phone,
+        whatsappNumber:req.body.wphone,
         email:sanitizer.escape(req.body.email)
       })
       const result = await Student.save()

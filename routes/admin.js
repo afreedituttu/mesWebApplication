@@ -7,6 +7,7 @@ var bcrypt = require('bcrypt')
 
 router.get('/',verifyLogin,async(req, res, next)=>{
   let studentData = await student.find()
+  console.log(studentData);
   res.render('adminD',{'data':studentData});
 });
 router.get('/login',async(req,res)=>{

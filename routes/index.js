@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var student = require('../db/models')
-var { verifyLogin } = require('../middlewares/admin')
+var sanitizer = require('sanitizer')
+var bcrypt = require('bcrypt')
 /* GET home page. */
-router.get('/', function(req, res, next) {
-
+router.get('/',async function(req, res, next) {
+  let some = await bcrypt.hash('afreedi',8)
+  console.log(some);
   res.render('index1');
 
 });
@@ -15,12 +17,12 @@ router.post('/register',async function(req,res,next){
   }else{
     try{
       const Student = new student({
-        name:req.body.name,
-        stream:req.body.stream,
-        school:req.body.school,
-        phoneNumber:req.body.phone,
-        whatsappNumber:req.body.wphone,
-        email:req.body.email
+        name:sanitizer.escape(req.body.name),
+        stream:sanitizer.escape(req.body.stream),
+        school:sanitizer.escape(req.body.school),
+        phoneNumber:sanitizer.escape(req.body.phone),
+        whatsappNumber:sanitizer.escape(req.body.wphone),
+        email:sanitizer.escape(req.body.email)
       })
       const result = await Student.save()
       

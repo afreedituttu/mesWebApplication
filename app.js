@@ -3,11 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const hbs = require('express-handlebars')
-const { engine } = require('express-handlebars')
 var indexRouter = require('./routes/index');
 var adminR = require('./routes/admin');
-var db = require('./db/connection')
+var helmet = require('helmet')
+var toobusy = require('toobusy-js')
+var hpp = require('hpp')
 var app = express();
 var session = require('express-session')
 //---------- email ----------//
@@ -47,9 +47,16 @@ var session = require('express-session')
 //---------- endof emai ---------//
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-// app.engine('hbs',hbs())
-// app.engine('hbs',handlebars({layoutsDir:__dirname+'/views/layouts',extname:'hbs'}))
 app.set('view engine', 'hbs');
+app.use(helmet()) // for preventing exposure of unwanted X-http headers
+app.use(function(req,res,next){
+  if(toobusy()){
+    res.send(500,'Server too busy') // to prevent dos/ddos/excess traffic
+  }else{
+    next()
+  }
+})
+app.use(hpp())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

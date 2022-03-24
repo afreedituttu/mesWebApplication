@@ -10,11 +10,11 @@ middleWares = {
         if(adminId==dataId){
             next()
         }else{
-            res.redirect('http://localhost:3000/code123admin/login')
+            res.redirect('/code123admin/login')
         }
     }else{
         
-        res.redirect('http://localhost:3000/code123admin/login')
+        res.redirect('/code123admin/login')
         next()
     }
 }}

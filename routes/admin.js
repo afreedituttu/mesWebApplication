@@ -7,17 +7,12 @@ var bcrypt = require('bcrypt')
 var limiter = require('express-rate-limit');
 const mongoose = require('mongoose');
 
-// router.get('/',async(req, res, next)=>{
-//   let studentData = await student.find().lean()
-//   console.log(studentData);
-//   res.render('adminD',{'Data':studentData,layout:'Adminlayout.hbs'});
-// });
-router.get('/',async(req, res, next)=>{
+router.get('/',verifyLogin,async(req, res, next)=>{
   let studentData = await student.find().sort({_id:-1}).limit(5).lean()
   console.log(studentData);
   res.render('dashboard',{'Data':studentData,layout:'Adminlayout.hbs'});
 });
-router.get('/alldata',async(req,res)=>{
+router.get('/alldata',verifyLogin,async(req,res)=>{
   let studentData = await student.find().lean()
   res.render('adminalldata',{'Data':studentData,layout:'Adminlayout.hbs'});
 })
@@ -54,15 +49,15 @@ router.post('/login',Loginlimiter,async(req,res)=>{
           
           req.session.loggedIn=true
           req.session.userId=adminsave[0]._id
-          res.send('logged in, click here to access admin panel : <a href="http://localhost:3000/code123admin">here</a>')
+          res.send('logged in, click here to access admin panel : <a href="/code123admin">here</a>')
         }else{
-          res.redirect('http://locahost:3000/code123admin')
+          res.redirect('/code123admin')
         }
       }).catch((err)=>{
         res.send('server error')
       });
     }else{
-      res.redirect('http://locahost:3000/code123admin')
+      res.redirect('/code123admin')
     }
   }catch(err){
     res.send('some technical error occured')

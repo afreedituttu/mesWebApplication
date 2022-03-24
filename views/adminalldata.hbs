@@ -24,6 +24,12 @@
               <li><a href="#">{{this.joindate}}</a></li>
               {{/each}}
             </ul>
+            <ul class="details">
+              <li class="topic">Delete</li>
+                      {{#each Data}}
+              <li><a href="/code123admin/delete/{{this._id}}"><button class="btn btn-danger">Delete</button></a></li>
+              {{/each}}
+            </ul>
           </div>
         </div>
 </div>

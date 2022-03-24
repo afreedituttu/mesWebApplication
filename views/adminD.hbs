@@ -34,6 +34,7 @@
       <th scope="col">email</th>
       <th scope="col">phoneNumber</th>
       <th scope="col">whatsappNumber</th>
+      <th scope="col">delete</th>
     </tr>
   </thead>
   <tbody>
@@ -46,6 +47,7 @@
       <td>{{this.email}}</td>
       <td>{{this.phoneNumber}}</td>
       <td>{{this.whatsappNumber}}</td>
+      <td><a href="http://localhost:3000/code123admin/delete/{{this._id}}"><button class="btn btn-danger">Delete</button></a></td>
     </tr>
     {{/each}}
   </tbody>

@@ -4,16 +4,36 @@ const admin = require('../db/adminModels')
 var { verifyLogin } = require('../middlewares/admin')
 var student = require('../db/models');
 var bcrypt = require('bcrypt')
+var limiter = require('express-rate-limit');
+const mongoose = require('mongoose');
 
 router.get('/',verifyLogin,async(req, res, next)=>{
   let studentData = await student.find()
   console.log(studentData);
   res.render('adminD',{'data':studentData});
 });
+router.get('/delete/:id',verifyLogin,async(req,res)=>{
+  const id = req.params.id
+  if(!id){
+    res.redirect('/')
+  }else{
+    student.deleteOne({_id:mongoose.Types.ObjectId(id)}).then(()=>{
+      res.redirect('/code123admin')
+    }).catch((err)=>{
+      console.log(err);
+      res.send('some technical error')
+    })
+  }
+})
 router.get('/login',async(req,res)=>{
   res.render('adminLogin')
 })
-router.post('/login',async(req,res)=>{
+// for avoiding bruteforce attack
+const Loginlimiter = limiter({
+  windowMs:5000,
+  max:4,
+})
+router.post('/login',Loginlimiter,async(req,res)=>{
   try{
     let adminsave = await admin.find({admin:true})
     const username=req.body.user

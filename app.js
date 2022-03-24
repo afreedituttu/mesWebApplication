@@ -10,53 +10,28 @@ var toobusy = require('toobusy-js')
 var hpp = require('hpp')
 var app = express();
 var session = require('express-session')
-//---------- email ----------//
-// let sibkey = process.env.SIB_API_KEY
-// var SibApiV3Sdk = require('sib-api-v3-sdk');
-// SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = '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';
+var limiter = require('express-rate-limit')
 
-// new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail({
 
-//      "sender":{ "email":"afreedisulfiker@gmail.com", "name":"Afreei Backend developer"},
-//      "subject":"This is my default subject line",
-//      "htmlContent":"<!DOCTYPE html><html><body><h1>My First Heading</h1><p>My first paragraph.</p></body></html>",
-//      "params":{
-//         "greeting":"This is the default greeting",
-//         "headline":"This is the default headline"
-//      },
-//    "messageVersions":[
-//      //Definition for Message Version 1 
-//      {
-//          "to":[
-//             {
-//                "email":"mumthas77@gmail.com",
-//                "name":"mumthas"
-//             },
-//             {
-//                "email":"aliyasulfi18@gmail.com",
-//                "name":"aliya"
-//             }
-//          ]
-//       }
-//     ]
-// }).then(function(data) {
-//   console.log(data);
-// }, function(error) {
-//   console.error(error);
-// });
-//---------- endof emai ---------//
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.use(helmet()) // for preventing exposure of unwanted X-http headers
+// for preventing exposure of unwanted X-http headers
+app.use(helmet()) 
+// to prevent dos/ddos/excess traffic
 app.use(function(req,res,next){
   if(toobusy()){
-    res.send(500,'Server too busy') // to prevent dos/ddos/excess traffic
+    res.send(500,'Server too busy') 
   }else{
     next()
   }
 })
+// to avoid html parameter pollution
 app.use(hpp())
+// to avoid ddos/dos attack
+app.use(limiter({
+  windowMs:5000,
+  max:10
+}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

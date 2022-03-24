@@ -8,9 +8,9 @@ var limiter = require('express-rate-limit');
 const mongoose = require('mongoose');
 
 router.get('/',verifyLogin,async(req, res, next)=>{
-  let studentData = await student.find()
+  let studentData = await student.find().lean()
   console.log(studentData);
-  res.render('adminD',{'data':studentData});
+  res.render('adminD',{'Data':studentData});
 });
 router.get('/delete/:id',verifyLogin,async(req,res)=>{
   const id = req.params.id

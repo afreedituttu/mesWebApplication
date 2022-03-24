@@ -11,10 +11,13 @@ var hpp = require('hpp')
 var app = express();
 var session = require('express-session')
 var limiter = require('express-rate-limit')
+var hbs = require('express-handlebars')
 
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.engine('hbs',hbs.engine({extname:"hbs",defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/'}))
+
 // for preventing exposure of unwanted X-http headers
 app.use(helmet()) 
 // to prevent dos/ddos/excess traffic

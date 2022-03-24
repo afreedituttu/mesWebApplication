@@ -7,10 +7,10 @@ var bcrypt = require('bcrypt')
 var limiter = require('express-rate-limit');
 const mongoose = require('mongoose');
 
-router.get('/',verifyLogin,async(req, res, next)=>{
+router.get('/',async(req, res, next)=>{
   let studentData = await student.find().lean()
   console.log(studentData);
-  res.render('adminD',{'Data':studentData});
+  res.render('adminD',{'Data':studentData,layout:'Adminlayout.hbs'});
 });
 router.get('/delete/:id',verifyLogin,async(req,res)=>{
   const id = req.params.id

@@ -16,8 +16,7 @@ var hbs = require('express-handlebars')
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.engine('hbs',hbs.engine({extname:"hbs",defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/'}))
-
+app.engine('hbs',hbs.engine({extname:"hbs",defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/',partialsDir:__dirname+'/views/partials/'}))
 // for preventing exposure of unwanted X-http headers
 app.use(helmet()) 
 // to prevent dos/ddos/excess traffic

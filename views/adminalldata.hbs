@@ -1,0 +1,29 @@
+<div class="student" style="width: 100%;min-width:1100px">
+          <div class="student-details">
+            <ul class="details">
+              <li class="topic">Name</li>
+              {{#each Data}}
+              <li><a href="#">{{this.name}}</a></li>
+              {{/each}}
+            </ul>
+                        <ul class="details">
+              <li class="topic">Stream</li>
+                            {{#each Data}}
+              <li><a href="#">{{this.stream}}</a></li>
+              {{/each}}
+            </ul>
+            <ul class="details">
+              <li class="topic">PH No.</li>
+                      {{#each Data}}
+              <li><a href="#">{{this.phoneNumber}}</a></li>
+              {{/each}}
+            </ul>
+            <ul class="details">
+              <li class="topic">Date</li>
+                      {{#each Data}}
+              <li><a href="#">{{this.joindate}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+</div>

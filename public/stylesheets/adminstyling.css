@@ -1,21 +1,113 @@
-body{
-    background-color: rgb(255, 255, 255);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins','sans-serif';
 }
-header{
-    width: 100%;
-    height: 70px;
-    background-color: rgb(246, 250, 253);
-    border: 1px solid black;
-    box-shadow: 0px 10px 10px rgb(206, 206, 206);
+body{
+    background: rgb(250, 250, 250);
     display: flex;
+    flex-wrap: wrap;
+}
+.wrapper{
+    margin: 0;
+    float: left;
+    display: flex;
+}
+.sidebar{
+    width: 100px;
+    height: 100vh;
+    background-color: #041630;
+    display: block;
+}
+.sidebar ul li{
+    list-style-type: none;
+    text-align: center;
+}
+.sidebar ul li i{
+    margin: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+.sidebar li:hover, li.active{
+    border-right: 7px solid rgb(55, 137, 243);
+}
+/* Main body */
+.head{
+    display: flex;
+    padding: 20px 30px;
+}
+.head-title span{
+    font-size: 14px;
+    color: rgb(151, 151, 151);
+}
+.head-search{
+    width: 400px;
+    margin-left: 70%;
+}
+input{
+    border: 2px solid rgb(17, 17, 17);
+    outline: none;
+    padding: 7px 13px;
+    border-radius: 15px;
+}
+
+/* card board */
+.card-board{
+    display: flex;
+    padding: 15px 40px;
+}
+.card{
+    width: 260px;
+    height: 150px;
+    padding: 20px;
+    background-color: #fff;
+    margin-right: 20px;
+    border: 2px solid rgb(43, 42, 42);
+    border-radius: 10px;
+}
+.card-icon{
+    display: flex;
+}
+.card-icon i{
+    margin: 15px 0px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 12.5rem;
+}
+.card #number{
+    display: block;
+    margin: 10px 20px;
+    align-self: center;
+    font-size: 40px;
+}
+/* details */
+.student{
+    width: 87%;
+    margin: 0 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(34, 34, 34);
+}
+
+.student-details{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-#sidebar{
-    width: 200px;
-    height: 100%;
-    min-height: 60vh;
-    background-color: rgb(27, 99, 231);
-    float: left;
-    display: block;
-    color: white;
+.topic{
+    font-size: 20px;
+    font-weight: 500;
+}
+.student-details li{
+    list-style-type: none;
+    margin: 8px 0px;
+}
+.student-details li a{
+    font-size: 18px;
+    color: #333;
+    font-weight: 400;
+    text-decoration: none;
 }

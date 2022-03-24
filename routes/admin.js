@@ -7,11 +7,20 @@ var bcrypt = require('bcrypt')
 var limiter = require('express-rate-limit');
 const mongoose = require('mongoose');
 
+// router.get('/',async(req, res, next)=>{
+//   let studentData = await student.find().lean()
+//   console.log(studentData);
+//   res.render('adminD',{'Data':studentData,layout:'Adminlayout.hbs'});
+// });
 router.get('/',async(req, res, next)=>{
-  let studentData = await student.find().lean()
+  let studentData = await student.find().sort({_id:-1}).limit(5).lean()
   console.log(studentData);
-  res.render('adminD',{'Data':studentData,layout:'Adminlayout.hbs'});
+  res.render('dashboard',{'Data':studentData,layout:'Adminlayout.hbs'});
 });
+router.get('/alldata',async(req,res)=>{
+  let studentData = await student.find().lean()
+  res.render('adminalldata',{'Data':studentData,layout:'Adminlayout.hbs'});
+})
 router.get('/delete/:id',verifyLogin,async(req,res)=>{
   const id = req.params.id
   if(!id){

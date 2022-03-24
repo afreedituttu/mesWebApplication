@@ -1,0 +1,69 @@
+      <div class="main-board">
+        <div class="card-board">
+          <div class="card">
+            <div class="card-icon">
+              <i class="fa fa-users"></i>
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <span>Number of registered students :</span><br>
+            <span id="number">27</span>
+          </div>
+                    <div class="card">
+            <div class="card-icon">
+              <i class="fa fa-users"></i>
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <span>Number of registered students :</span><br>
+            <span id="number">27</span>
+          </div>
+                    <div class="card">
+            <div class="card-icon">
+              <i class="fa fa-users"></i>
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <span>Number of registered students :</span><br>
+            <span id="number">27</span>
+          </div>
+                    <div class="card">
+            <div class="card-icon">
+              <i class="fa fa-users"></i>
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <span>Number of registered students :</span><br>
+            <span id="number">27</span>
+          </div>
+        </div>
+        <div class="head">
+          <div class="head-title">
+            <h2>Latest leads :</h2>
+          </div>
+        </div>
+        <div class="student">
+          <div class="student-details">
+            <ul class="details">
+              <li class="topic">Name</li>
+              {{#each Data}}
+              <li><a href="#">{{this.name}}</a></li>
+              {{/each}}
+            </ul>
+                        <ul class="details">
+              <li class="topic">Stream</li>
+                            {{#each Data}}
+              <li><a href="#">{{this.stream}}</a></li>
+              {{/each}}
+            </ul>
+            <ul class="details">
+              <li class="topic">PH No.</li>
+                      {{#each Data}}
+              <li><a href="#">{{this.phoneNumber}}</a></li>
+              {{/each}}
+            </ul>
+            <ul class="details">
+              <li class="topic">Date</li>
+                      {{#each Data}}
+              <li><a href="#">{{this.joindate}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>

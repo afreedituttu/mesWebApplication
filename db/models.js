@@ -1,19 +1,12 @@
 var mongoose = require('mongoose')
-var validator = require('validator')
 const { Schema } = require('./connection')
-const streams = ['cse','me','ec','civil']
+const defaultDate = new Date()
 const studentSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
         minlength:3,
         maxlength:20,
-        trim:true
-    },
-    stream:{
-        type:String,
-        required:true,
-        enum:streams,
         trim:true
     },
     school:{
@@ -43,10 +36,15 @@ const studentSchema = mongoose.Schema({
         maxlength:11
     },
     joindate:{
-        type:Date,
-        default:Date.now()
+        type:Schema.Types.Mixed,
+        default:{
+            date:defaultDate.getDate(),
+            month:defaultDate.getMonth(),
+            year:defaultDate.getFullYear()
+        }
     }
 })
 const student = new mongoose.model('students',studentSchema)
+
 
 module.exports = student

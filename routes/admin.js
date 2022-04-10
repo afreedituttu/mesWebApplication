@@ -6,15 +6,33 @@ var student = require('../db/models');
 var bcrypt = require('bcrypt')
 var limiter = require('express-rate-limit');
 const mongoose = require('mongoose');
+var serverstatus = require('../db/serverstatus')
 
 router.get('/',verifyLogin,async(req, res, next)=>{
   let studentData = await student.find().sort({_id:-1}).limit(5).lean()
-  console.log(studentData);
   res.render('dashboard',{'Data':studentData,layout:'Adminlayout.hbs'});
 });
 router.get('/alldata',verifyLogin,async(req,res)=>{
   let studentData = await student.find().lean()
   res.render('adminalldata',{'Data':studentData,layout:'Adminlayout.hbs'});
+})
+router.get('/status',verifyLogin,async(req,res)=>{
+  let server = await serverstatus.find()
+  console.log(server[0].status);
+  res.render('as',{statuses:server[0].status,s:'s',layout:'Adminlayout.hbs'})
+})
+router.post('/status',verifyLogin,async(req,res)=>{
+  console.log('im enter');
+  let server = await serverstatus.find()
+  if(server[0].status){
+    console.log('im at flasing stts');
+      let latestserverstatus = await serverstatus.updateOne({},{status:false})
+  }else{
+    console.log('im at trueing stts');
+    let latestserverstatus = await serverstatus.updateOne({},{status:true})
+  }
+
+  res.redirect('/code123admin/status')
 })
 router.get('/delete/:id',verifyLogin,async(req,res)=>{
   const id = req.params.id

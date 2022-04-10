@@ -5,7 +5,7 @@
               <i class="fa fa-users"></i>
               <i class="fa fa-ellipsis-v"></i>
             </div>
-            <span>Number of registered students :</span><br>
+            <span>current server status :</span><br>
             <span id="number">27</span>
           </div>
                     <div class="card">
@@ -46,12 +46,6 @@
               <li><a href="#">{{this.name}}</a></li>
               {{/each}}
             </ul>
-                        <ul class="details">
-              <li class="topic">Stream</li>
-                            {{#each Data}}
-              <li><a href="#">{{this.stream}}</a></li>
-              {{/each}}
-            </ul>
             <ul class="details">
               <li class="topic">PH No.</li>
                       {{#each Data}}
@@ -61,7 +55,7 @@
             <ul class="details">
               <li class="topic">Date</li>
                       {{#each Data}}
-              <li><a href="#">{{this.joindate}}</a></li>
+              <li><a href="#">{{this.joindate.date}}/{{this.joindate.month}}/{{this.joindate.year}}</a></li>
               {{/each}}
             </ul>
           </div>

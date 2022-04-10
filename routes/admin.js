@@ -10,7 +10,10 @@ var serverstatus = require('../db/serverstatus')
 
 router.get('/',verifyLogin,async(req, res, next)=>{
   let studentData = await student.find().sort({_id:-1}).limit(5).lean()
-  res.render('dashboard',{'Data':studentData,layout:'Adminlayout.hbs'});
+  let studentcount = await student.find().sort({_id:-1}).limit(5).count().lean()
+  let server = await serverstatus.find()
+  let serverstat = server[0].status
+  res.render('dashboard',{'Data':studentData,'status':serverstat,'count':studentcount,layout:'Adminlayout.hbs'});
 });
 router.get('/alldata',verifyLogin,async(req,res)=>{
   let studentData = await student.find().lean()

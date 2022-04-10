@@ -42,6 +42,11 @@ const studentSchema = mongoose.Schema({
             month:defaultDate.getMonth(),
             year:defaultDate.getFullYear()
         }
+    },
+    address:{
+        type:Schema.Types.Mixed,
+        minlength:3,
+        maxlength:100,
     }
 })
 const student = new mongoose.model('students',studentSchema)

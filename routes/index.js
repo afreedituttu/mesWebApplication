@@ -21,7 +21,8 @@ router.post('/register',async function(req,res,next){
           school:sanitizer.escape(req.body.school),
           phoneNumber:sanitizer.escape(req.body.phone),
           whatsappNumber:sanitizer.escape(req.body.wphone),
-          email:sanitizer.escape(req.body.email)
+          email:sanitizer.escape(req.body.email),
+          address:sanitizer.escape(req.body.address)
         })
         const result = await Student.save()
         res.redirect('/')

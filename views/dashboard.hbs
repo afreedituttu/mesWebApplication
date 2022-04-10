@@ -6,7 +6,11 @@
               <i class="fa fa-ellipsis-v"></i>
             </div>
             <span>current server status :</span><br>
-            <span id="number">27</span>
+            {{#if status}}
+            <span id="number" style="color: rgb(0, 255, 60);">Running</span>
+            {{else}}
+            <span id="number" style="color: rgb(255, 42, 0)">Down</span>
+            {{/if}}
           </div>
                     <div class="card">
             <div class="card-icon">
@@ -14,7 +18,7 @@
               <i class="fa fa-ellipsis-v"></i>
             </div>
             <span>Number of registered students :</span><br>
-            <span id="number">27</span>
+            <span id="number">{{count}}</span>
           </div>
                     <div class="card">
             <div class="card-icon">
@@ -48,9 +52,15 @@
             </ul>
             <ul class="details">
               <li class="topic">PH No.</li>
-                      {{#each Data}}
-              <li><a href="#">{{this.phoneNumber}}</a></li>
-              {{/each}}
+                {{#each Data}}
+                  <li><a href="#">{{this.phoneNumber}}</a></li>
+                {{/each}}
+            </ul>
+            <ul>
+              <li class="topic">Address</li>
+                {{#each Data}}
+                  <li><a href="#">{{this.address}}</a></li>
+                {{/each}}
             </ul>
             <ul class="details">
               <li class="topic">Date</li>

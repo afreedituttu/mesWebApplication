@@ -18,10 +18,16 @@
               <li><a href="#">{{this.joindate.date}}/{{this.joindate.month}}/{{this.joindate.year}}</a></li>
               {{/each}}
             </ul>
+            <ul>
+              <li class="topic">Address</li>
+                {{#each Data}}
+                  <li><a href="#">{{this.address}}</a></li>
+                {{/each}}
+            </ul>
             <ul class="details">
               <li class="topic">Delete</li>
                       {{#each Data}}
-              <li><a href="/code123admin/delete/{{this._id}}"><button class="btn btn-danger">Delete</button></a></li>
+              <li><a href="/code123admin/delete/{{this._id}}"><button style="display: flex;width:50px;height:30px;background-color:rgb(243, 34, 34);justify-content:center;align-content:center;">Delete</button></a></li>
               {{/each}}
             </ul>
           </div>

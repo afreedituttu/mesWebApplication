@@ -1,0 +1,19 @@
+<div style="margin: 60px;">
+    {{#if statuses}}
+    <div><span>current status : <span style="color: rgb(0, 255, 60);">Running</span></span></div>
+    <br>
+    <form action="/code123admin/status" method="post">
+    <button type="submit" style="width: 100px;height:100px;background-color:rgb(31, 239, 34);display:flex;align-items:center;justify-content:center;border:0px solid black;border-radius:3px;">
+        <i class="fa fa-power-off" style="color: aliceblue;font-size:50px;"></i>
+    </button>
+    </form>
+    {{else}}
+       <div><span>current status : <span style="color: rgb(255, 42, 0);">Down</span></span></div>
+       <br>
+<form action="/code123admin/status" method="post">
+         <button type="submit" style="width: 100px;height:100px;background-color:rgb(239, 31, 31);display:flex;align-items:center;justify-content:center;border:0px solid black;border-radius:3px;">
+             <i class="fa fa-power-off fa-2xs" style="color: aliceblue;font-size:50px;"></i>
+         </button>
+    </form>
+    {{/if}}
+</div>

@@ -58,6 +58,11 @@ const Loginlimiter = limiter({
   windowMs:5000,
   max:4,
 })
+router.post('/logout',verifyLogin,async(req,res)=>{
+  req.session.loggedIn = false
+  req.session.userId = ''
+  res.redirect('/code123admin')
+})
 router.post('/login',Loginlimiter,async(req,res)=>{
   try{
     let adminsave = await admin.find({admin:true})
@@ -66,11 +71,10 @@ router.post('/login',Loginlimiter,async(req,res)=>{
     if(username===adminsave[0].username){
       bcrypt.compare(password,adminsave[0].password).then((st)=>{
         console.log(st);
-        if(st){
-          
+        if(st){          
           req.session.loggedIn=true
           req.session.userId=adminsave[0]._id
-          res.send('logged in, click here to access admin panel : <a href="/code123admin">here</a>')
+          res.redirect('/code123admin')
         }else{
           res.redirect('/code123admin')
         }

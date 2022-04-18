@@ -1,3 +1,4 @@
+<form action="/code123admin/logout" method="post"><button type="submit" style="width: 100px;height:100px;position:absolute;top:0;right:0;background-color:rgb(246, 0, 0);justify-content:center;align-items:center;"><p style="color: aliceblue;font-size:20px;">logout</p><br><i class="fa fa-power-off" style="color: aliceblue;font-size:50px;"></i></button></form>
       <div class="main-board">
         <div class="card-board">
           <div class="card">
@@ -65,8 +66,8 @@
             <ul class="details">
               <li class="topic">Date</li>
                       {{#each Data}}
-              <li><a href="#">{{this.joindate.date}}/{{this.joindate.month}}/{{this.joindate.year}}</a></li>
-              {{/each}}
+                      {{this.joindate}} 
+                     {{/each}}
             </ul>
           </div>
         </div>

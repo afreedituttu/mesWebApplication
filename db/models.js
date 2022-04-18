@@ -36,12 +36,8 @@ const studentSchema = mongoose.Schema({
         maxlength:11
     },
     joindate:{
-        type:Schema.Types.Mixed,
-        default:{
-            date:defaultDate.getDate(),
-            month:defaultDate.getMonth(),
-            year:defaultDate.getFullYear()
-        }
+        type:Date,
+        default:Date.now()
     },
     address:{
         type:Schema.Types.Mixed,

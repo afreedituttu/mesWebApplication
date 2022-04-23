@@ -15,7 +15,7 @@ router.get('/',verifyLogin,async(req, res, next)=>{
   let serverstat = server[0].status
   res.render('dashboard',{'Data':studentData,'status':serverstat,'count':studentcount,layout:'Adminlayout.hbs'});
 });
-router.get('/alldata',verifyLogin,async(req,res)=>{
+router.get('/alldata',async(req,res)=>{
   let studentData = await student.find().lean()
   res.render('adminalldata',{'Data':studentData,layout:'Adminlayout.hbs'});
 })

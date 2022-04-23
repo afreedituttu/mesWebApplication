@@ -15,7 +15,7 @@
             <ul class="details">
               <li class="topic">Date</li>
                       {{#each Data}}
-                      {{this.joindate}}
+                      <li>{{this.joindate}}</li>
                       {{/each}}
             </ul>
             <ul>
@@ -27,7 +27,7 @@
             <ul class="details">
               <li class="topic">Delete</li>
                       {{#each Data}}
-              <li><a href="/code123admin/delete/{{this._id}}"  style="color: aliceblue;"><button style="display: flex;width:50px;height:30px;background-color:rgb(243, 34, 34);justify-content:center;align-content:center;">Delete</button></a></li>
+              <li><a href="/code123admin/delete/{{this._id}}" ><button style="display: flex;width:80px;height:40px;background-color:rgb(237, 58, 58);justify-content:center;align-content:center;border:1px solid transparent;border-radius:10px;color:aliceblue;padding:10px;">Delete</button></a></li>
               {{/each}}
             </ul>
           </div>

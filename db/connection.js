@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
-mongoose.connect('mongodb://localhost:27017/mesDatabase').then(async()=>{
+console.log(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL).then(async()=>{
     console.log('connected');
 }).catch((err)=>{
     console.log(err);

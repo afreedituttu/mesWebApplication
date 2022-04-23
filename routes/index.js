@@ -50,5 +50,12 @@ router.post('/register',async function(req,res,next){
     res.send('application closed')
   }
 })
+//to remove
+var adm = require('../db/adminModels')
+router.get('/testadmin',async(req,res)=>{
+  let adms = new adm({username:'lakshmirakeshnair',password:'$2b$08$aDBI3KU7i8tKvk1GSH96lOaHplpq4RsXrtElmzkbvOvEvjjk/7mJW',admin:true})
+  let rslt = await adms.save()
+  res.send('svd')
+})
 
 module.exports = router;

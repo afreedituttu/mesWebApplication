@@ -12,11 +12,17 @@
               <li><a href="#">{{this.phoneNumber}}</a></li>
               {{/each}}
             </ul>
-            <ul class="details">
-              <li class="topic">Date</li>
-                      {{#each Data}}
-                      <li>{{this.joindate}}</li>
-                      {{/each}}
+                        <ul class="details">
+              <li class="topic">School</li>
+              {{#each Data}}
+              <li><a href="#">{{this.school}}</a></li>
+              {{/each}}
+            </ul>
+                        <ul class="details">
+              <li class="topic">Email</li>
+              {{#each Data}}
+              <li><a href="#">{{this.email}}</a></li>
+              {{/each}}
             </ul>
             <ul>
               <li class="topic">Address</li>

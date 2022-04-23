@@ -15,7 +15,7 @@ router.get('/',verifyLogin,async(req, res, next)=>{
   let serverstat = server[0].status
   res.render('dashboard',{'Data':studentData,'status':serverstat,'count':studentcount,layout:'Adminlayout.hbs'});
 });
-router.get('/alldata',async(req,res)=>{
+router.get('/alldata',verifyLogin,async(req,res)=>{
   let studentData = await student.find().lean()
   res.render('adminalldata',{'Data':studentData,layout:'Adminlayout.hbs'});
 })
@@ -43,7 +43,7 @@ router.get('/delete/:id',verifyLogin,async(req,res)=>{
     res.redirect('/')
   }else{
     student.deleteOne({_id:mongoose.Types.ObjectId(id)}).then(()=>{
-      res.redirect('/code123admin')
+      res.redirect('/code123admin/alldata')
     }).catch((err)=>{
       console.log(err);
       res.send('some technical error')

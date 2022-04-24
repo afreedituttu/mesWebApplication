@@ -29,7 +29,7 @@ router.post('/register',async function(req,res,next){
           competition:sanitizer.escape(req.body.competition)
         })
         const result = await Student.save()
-        res.redirect('/')
+        res.render('form',{message:'Thankyou For Your Application',status:'success'})
       }catch(err){
         error = {}
         console.log(err);
@@ -47,6 +47,7 @@ router.post('/register',async function(req,res,next){
         }catch(err){
           res.send('some error accured')
         }
+        error.status = 'danger'
         res.render('form',error)
       }
     }

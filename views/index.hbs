@@ -12,6 +12,7 @@
   <!-- Favicons -->
   <link href="assets/img/logo.jpg" rel="icon">
   <!-- Google Fonts -->
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self' 'unsafe-eval' 'safe-inline'">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -464,7 +465,7 @@
 
         <div class="section-title">
           <h2>gallery</h2>
-          </div>
+        </div>
         <div class="row gallery-container" data-aos="fade-up" data-aos-delay="300">
 
           <div class="slideshow-container">
@@ -522,28 +523,7 @@
               <span class="dot"></span> 
               <span class="dot"></span> 
             </div>
-            
-            <script>
-            let slideIndex = 0;
-            showSlides();
-            
-            function showSlides() {
-              let i;
-              let slides = document.getElementsByClassName("mySlides");
-              let dots = document.getElementsByClassName("dot");
-              for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-              }
-              slideIndex++;
-              if (slideIndex > slides.length) {slideIndex = 1}    
-              for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-              }
-              slides[slideIndex-1].style.display = "block";  
-              dots[slideIndex-1].className += " active";
-              setTimeout(showSlides, 2000); 
-            }
-            </script>
+            <script src="slider.js"></script>
         </div>
 
       </div>
@@ -611,7 +591,7 @@
       </div>
     </div>
   </footer><!-- End Footer -->
-
+    <div id="preloader"></div>
  <a href="/register"> <button class="back-to-top d-flex align-items-center justify-content-center">Register Now</button></a>
   
   <!-- Vendor JS Files -->

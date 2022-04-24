@@ -64,6 +64,7 @@ router.post('/logout',verifyLogin,async(req,res)=>{
   res.redirect('/code123admin')
 })
 router.post('/login',Loginlimiter,async(req,res)=>{
+  console.log('im at admin');
   try{
     let adminsave = await admin.find({admin:true})
     const username=req.body.user

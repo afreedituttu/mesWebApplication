@@ -6,7 +6,10 @@ var serverstatus = require('../db/serverstatus')
 
 /* GET home page. */
 router.get('/',async function(req, res, next) {
-  res.render('index1');
+  res.render('index');
+});
+router.get('/register',async function(req, res, next) {
+  res.render('form');
 });
 router.post('/register',async function(req,res,next){
   let server = await serverstatus.find()
@@ -22,7 +25,8 @@ router.post('/register',async function(req,res,next){
           phoneNumber:sanitizer.escape(req.body.phone),
           whatsappNumber:sanitizer.escape(req.body.wphone),
           email:sanitizer.escape(req.body.email),
-          address:sanitizer.escape(req.body.address)
+          address:sanitizer.escape(req.body.address),
+          competition:sanitizer.escape(req.body.competition)
         })
         const result = await Student.save()
         res.redirect('/')
@@ -43,7 +47,7 @@ router.post('/register',async function(req,res,next){
         }catch(err){
           res.send('some error accured')
         }
-        res.render('index1',error)
+        res.render('form',error)
       }
     }
   }else{

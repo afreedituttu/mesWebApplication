@@ -7,6 +7,12 @@
               {{/each}}
             </ul>
             <ul class="details">
+              <li class="topic">competition</li>
+              {{#each Data}}
+              <li><a href="#">{{this.competition}}</a></li>
+              {{/each}}
+            </ul>
+            <ul class="details">
               <li class="topic">PH No.</li>
                       {{#each Data}}
               <li><a href="#">{{this.phoneNumber}}</a></li>

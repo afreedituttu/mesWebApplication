@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
 const { Schema } = require('./connection')
 const defaultDate = new Date()
+competitions = ['reels','artfest','futsal','projectexibition','quiz']
 const studentSchema = mongoose.Schema({
     name:{
         type:String,
@@ -43,6 +44,10 @@ const studentSchema = mongoose.Schema({
         type:Schema.Types.Mixed,
         minlength:3,
         maxlength:100,
+    },
+    competition:{
+        type:String,
+        enum:competitions
     }
 })
 const student = new mongoose.model('students',studentSchema)

@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
 #header .logo img {
-  max-height: 80px;
+  max-height: 70px;
 }
 @media (max-width: 992px) {
   #header .logo {
